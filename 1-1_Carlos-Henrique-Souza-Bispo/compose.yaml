@@ -1,0 +1,16 @@
+services:
+  retention-ai:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_PATH: /app/artifacts/churn_model.joblib
+      METRICS_PATH: /app/artifacts/metrics.json
+      LOG_PATH: /app/logs/predictions.jsonl
+    volumes:
+      - retention-logs:/app/logs
+    restart: unless-stopped
+
+volumes:
+  retention-logs:
+

@@ -1,0 +1,59 @@
+{
+  "trained_at": "2026-06-30T12:05:01.470194+00:00",
+  "dataset": {
+    "source": "https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv",
+    "rows_after_cleaning": 7043,
+    "positive_rate": 0.2654,
+    "license": "Apache License 2.0 (repositório oficial da IBM)."
+  },
+  "split": {
+    "train_rows": 5634,
+    "test_rows": 1409,
+    "random_state": 42
+  },
+  "decision_threshold": 0.1412,
+  "test": {
+    "roc_auc": 0.8419,
+    "pr_auc": 0.6338,
+    "precision": 0.4378,
+    "recall": 0.9225,
+    "f1": 0.5938,
+    "f2": 0.7553,
+    "confusion_matrix": {
+      "tn": 592,
+      "fp": 443,
+      "fn": 29,
+      "tp": 345
+    }
+  },
+  "fairness_slices": {
+    "gender": {
+      "Female": {
+        "samples": 687,
+        "recall": 0.9171,
+        "false_positive_rate": 0.419,
+        "positive_prediction_rate": 0.559
+      },
+      "Male": {
+        "samples": 722,
+        "recall": 0.9282,
+        "false_positive_rate": 0.4362,
+        "positive_prediction_rate": 0.5596
+      }
+    },
+    "senior_citizen": {
+      "0": {
+        "samples": 1187,
+        "recall": 0.9022,
+        "false_positive_rate": 0.3952,
+        "positive_prediction_rate": 0.5131
+      },
+      "1": {
+        "samples": 222,
+        "recall": 0.9796,
+        "false_positive_rate": 0.6694,
+        "positive_prediction_rate": 0.8063
+      }
+    }
+  }
+}
