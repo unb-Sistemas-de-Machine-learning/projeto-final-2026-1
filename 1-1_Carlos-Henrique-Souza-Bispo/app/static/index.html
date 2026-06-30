@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="RetentionAI — triagem auditável de risco de churn e apoio à retenção."
+    />
+    <title>RetentionAI · Churn sob controle</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="RetentionAI, início">
+        <span class="brand-mark">R</span>
+        <span>Retention<span>AI</span></span>
+      </a>
+      <nav aria-label="Links principais">
+        <a href="#analise">Analisar</a>
+        <a href="/docs">API</a>
+        <span class="status"><i></i> modelo ativo</span>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">Decisão assistida · Humano no controle</div>
+        <h1>Antecipe o churn.<br /><em>Converse antes da saída.</em></h1>
+        <p>
+          Transforme sinais do cadastro em uma estimativa explicável e em próximos
+          passos de retenção — sem tratar probabilidade como sentença.
+        </p>
+        <div class="hero-stats" aria-label="Características da solução">
+          <span><strong>19</strong> sinais analisados</span>
+          <span><strong>100%</strong> auditável</span>
+          <span><strong>3</strong> ações priorizadas</span>
+        </div>
+      </section>
+
+      <section class="workspace" id="analise">
+        <div class="section-heading">
+          <div>
+            <span class="step">01</span>
+            <h2>Perfil do cliente</h2>
+          </div>
+          <div class="sample-actions">
+            <span>Preencher exemplo:</span>
+            <button type="button" class="text-button" data-sample="high">alto risco</button>
+            <button type="button" class="text-button" data-sample="low">baixo risco</button>
+          </div>
+        </div>
+
+        <form id="churn-form">
+          <fieldset>
+            <legend>Relacionamento</legend>
+            <div class="form-grid">
+              <label>
+                Identificador <small>opcional</small>
+                <input name="customer_id" maxlength="64" placeholder="Ex.: cliente-042" />
+              </label>
+              <label>
+                Gênero cadastrado
+                <select name="gender">
+                  <option value="Female">Feminino</option>
+                  <option value="Male">Masculino</option>
+                </select>
+              </label>
+              <label>
+                Pessoa idosa
+                <select name="senior_citizen">
+                  <option value="0">Não</option>
+                  <option value="1">Sim</option>
+                </select>
+              </label>
+              <label>
+                Possui parceiro(a)
+                <select name="partner">
+                  <option value="No">Não</option>
+                  <option value="Yes">Sim</option>
+                </select>
+              </label>
+              <label>
+                Possui dependentes
+                <select name="dependents">
+                  <option value="No">Não</option>
+                  <option value="Yes">Sim</option>
+                </select>
+              </label>
+              <label>
+                Tempo como cliente <small>meses</small>
+                <input name="tenure" type="number" min="0" max="72" value="3" required />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Serviços contratados</legend>
+            <div class="form-grid">
+              <label>
+                Serviço telefônico
+                <select name="phone_service">
+                  <option value="Yes">Sim</option>
+                  <option value="No">Não</option>
+                </select>
+              </label>
+              <label>
+                Múltiplas linhas
+                <select name="multiple_lines">
+                  <option value="No">Não</option>
+                  <option value="Yes">Sim</option>
+                  <option value="No phone service">Sem serviço telefônico</option>
+                </select>
+              </label>
+              <label>
+                Serviço de internet
+                <select name="internet_service">
+                  <option value="Fiber optic">Fibra óptica</option>
+                  <option value="DSL">DSL</option>
+                  <option value="No">Sem internet</option>
+                </select>
+              </label>
+              <label>
+                Segurança online
+                <select name="online_security" data-addon>
+                  <option value="No">Não</option>
+                  <option value="Yes">Sim</option>
+                  <option value="No internet service">Sem internet</option>
+                </select>
+              </label>
+              <label>
+                Backup online
+                <select name="online_backup" data-addon>
+                  <option value="No">Não</option>
+                  <option value="Yes">Sim</option>
+                  <option value="No internet service">Sem internet</option>
+                </select>
+              </label>
+              <label>
+                Proteção do dispositivo
+                <select name="device_protection" data-addon>
+                  <option value="No">Não</option>
+                  <option value="Yes">Sim</option>
+                  <option value="No internet service">Sem internet</option>
+                </select>
+              </label>
+              <label>
+                Suporte técnico
+                <select name="tech_support" data-addon>
+                  <option value="No">Não</option>
+                  <option value="Yes">Sim</option>
+                  <option value="No internet service">Sem internet</option>
+                </select>
+              </label>
+              <label>
+                Streaming de TV
+                <select name="streaming_tv" data-addon>
+                  <option value="No">Não</option>
+                  <option value="Yes">Sim</option>
+                  <option value="No internet service">Sem internet</option>
+                </select>
+              </label>
+              <label>
+                Streaming de filmes
+                <select name="streaming_movies" data-addon>
+                  <option value="No">Não</option>
+                  <option value="Yes">Sim</option>
+                  <option value="No internet service">Sem internet</option>
+                </select>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Contrato e cobrança</legend>
+            <div class="form-grid">
+              <label>
+                Tipo de contrato
+                <select name="contract">
+                  <option value="Month-to-month">Mensal</option>
+                  <option value="One year">Um ano</option>
+                  <option value="Two year">Dois anos</option>
+                </select>
+              </label>
+              <label>
+                Fatura digital
+                <select name="paperless_billing">
+                  <option value="Yes">Sim</option>
+                  <option value="No">Não</option>
+                </select>
+              </label>
+              <label>
+                Forma de pagamento
+                <select name="payment_method">
+                  <option value="Electronic check">Cheque eletrônico</option>
+                  <option value="Mailed check">Cheque enviado</option>
+                  <option value="Bank transfer (automatic)">Transferência automática</option>
+                  <option value="Credit card (automatic)">Cartão automático</option>
+                </select>
+              </label>
+              <label>
+                Cobrança mensal <small>R$</small>
+                <input
+                  name="monthly_charges"
+                  type="number"
+                  min="0"
+                  max="200"
+                  step="0.01"
+                  value="95.50"
+                  required
+                />
+              </label>
+              <label>
+                Cobrança acumulada <small>R$</small>
+                <input
+                  name="total_charges"
+                  type="number"
+                  min="0"
+                  max="20000"
+                  step="0.01"
+                  value="286.50"
+                  required
+                />
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="form-footer">
+            <p>
+              <span>Privacidade por design.</span> O perfil completo não é gravado nos logs.
+            </p>
+            <button class="primary-button" type="submit">
+              <span>Calcular risco e plano</span>
+              <b aria-hidden="true">→</b>
+            </button>
+          </div>
+          <div id="form-error" class="error-message" role="alert" hidden></div>
+        </form>
+      </section>
+
+      <section id="results" class="results" aria-live="polite" hidden>
+        <div class="section-heading">
+          <div>
+            <span class="step">02</span>
+            <h2>Leitura do agente</h2>
+          </div>
+          <span id="latency" class="latency"></span>
+        </div>
+
+        <div class="result-layout">
+          <article class="risk-card">
+            <span class="card-label">Probabilidade estimada</span>
+            <div class="gauge" id="risk-gauge">
+              <div><strong id="risk-value">—</strong><small>risco de churn</small></div>
+            </div>
+            <span class="risk-pill" id="risk-pill">—</span>
+            <p id="confidence-note"></p>
+          </article>
+          <article class="factors-card">
+            <span class="card-label">Sinais que mais pesaram</span>
+            <div id="factors-list" class="factors-list"></div>
+          </article>
+        </div>
+
+        <article class="actions-card">
+          <div>
+            <span class="card-label">Próxima melhor conversa</span>
+            <h3>Playbook sugerido</h3>
+          </div>
+          <ol id="recommendations"></ol>
+        </article>
+        <div id="warnings" class="warning-box" hidden></div>
+        <p class="decision-disclaimer">
+          Esta ferramenta apoia a priorização. Não cancele benefícios, negue atendimento ou
+          tome decisões automatizadas apenas com base nesta estimativa.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <span>RetentionAI · Projeto acadêmico</span>
+      <span>Modelo interpretável, decisões humanas.</span>
+    </footer>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
+
