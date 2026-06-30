@@ -18,29 +18,38 @@ de retenção. A estimativa apoia uma conversa humana; ela não toma decisões a
 
 Com Docker (recomendado):
 
-```bash
+```powershell
+cd .\1-1_Carlos-Henrique-Souza-Bispo
 docker compose up --build
 ```
 
 Acesse <http://localhost:8000>. O artefato treinado já acompanha o projeto, portanto a
 aplicação não precisa baixar o dataset nem chamar serviços externos para iniciar.
 
-Sem Docker:
+Sem Docker, no Windows PowerShell:
+
+```powershell
+cd .\1-1_Carlos-Henrique-Souza-Bispo
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --reload
+```
+
+No Linux ou macOS:
 
 ```bash
-python -m venv .venv
-# Linux/macOS: source .venv/bin/activate
-# Windows PowerShell: .\.venv\Scripts\Activate.ps1
+cd 1-1_Carlos-Henrique-Souza-Bispo
+python3 -m venv .venv
+source .venv/bin/activate
 python -m pip install -r requirements-dev.txt
-python -m app.training
-uvicorn app.main:app --reload
+python -m uvicorn app.main:app --reload
 ```
 
 Para validar:
 
-```bash
-pytest --cov=app
-ruff check .
+```powershell
+.\.venv\Scripts\python.exe -m pytest --cov=app
+.\.venv\Scripts\ruff.exe check .
 ```
 
 ## Definição do problema
@@ -242,9 +251,6 @@ Roteiro sugerido para o vídeo:
 6. explicar em menos de um minuto o fallback e a revisão humana.
 
 Vídeo da demonstração: [assistir no YouTube](https://youtu.be/lLQH8TB4JKk).
-
-> Antes da entrega, substitua `SEU_VIDEO_ID` pelo identificador real do vídeo nas duas
-> ocorrências deste README.
 
 ## Iterações e decisões
 

@@ -19,7 +19,7 @@ uma abordagem humana.
 **Matrícula:** 211061529  
 **Relatório:** [README do projeto](./1-1_Carlos-Henrique-Souza-Bispo/README.md)  
 **Aplicação:** `[ADICIONAR URL PÚBLICA]`  
-**Vídeo:** [demonstração no YouTube](https://youtu.be/SEU_VIDEO_ID)
+**Vídeo:** [demonstração no YouTube](https://youtu.be/lLQH8TB4JKk)
 
 ### O que foi entregue
 
@@ -118,7 +118,7 @@ monitoramento antes de qualquer uso real.
 - [x] Testes automatizados
 - [x] Data Card e Model Card
 - [ ] URL pública adicionada ao README e a este PR
-- [ ] Vídeo publicado e `SEU_VIDEO_ID` substituído
+- [x] Vídeo publicado e adicionado à documentação
 - [ ] Screenshot ou GIF da aplicação anexado abaixo
 
 ### Demonstração visual
@@ -135,4 +135,3 @@ O caminho principal para avaliação é:
 4. selecionar o exemplo de baixo risco para comparação;
 5. consultar `/docs`, `/health` e `/api/v1/model-card`;
 6. consultar o README para decisões, limitações, ética e próximos passos.
-
